@@ -1,0 +1,28 @@
+
+.table {
+  box-sizing: border-box;
+  border-collapse: collapse;
+  
+  tr {
+    transition: background-color .25s ease-in-out;
+
+    &.table_body_row {
+      &:hover {
+        background-color: rgb(238, 238, 238);
+      }
+    }
+  }
+
+  th {
+    color: grey;
+    font-weight: normal;
+    font-size: 14px;
+    padding: 10px;
+    font-family: 'NanumSquareRoundB';
+  }
+
+  td {
+    text-align: center;
+    padding: 10px 5px;
+  }
+}
