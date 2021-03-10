@@ -36,7 +36,7 @@ const Main = ({ tradeSearchResult, tradeStatsResult, tradeStatsPeriodResult, tra
       sortMode: 'desc',
       tradeType: 'TRADE',
       fromDate: '2020-10-01',
-      toDate: '2020-11-30'
+      toDate: '2022-11-30'
     });
     
     tradeStats({
@@ -47,7 +47,7 @@ const Main = ({ tradeSearchResult, tradeStatsResult, tradeStatsPeriodResult, tra
       cityType: type,
       tradeType: 'TRADE',
       fromDate: '2020-10-01',
-      toDate: '2020-11-30'
+      toDate: '2022-11-30'
     })
 
     tradeStatsPeriod({
@@ -58,7 +58,7 @@ const Main = ({ tradeSearchResult, tradeStatsResult, tradeStatsPeriodResult, tra
       cityType: type,
       tradeType: 'TRADE',
       fromDate: '2020-10-01',
-      toDate: '2020-11-30'
+      toDate: '2022-11-30'
     });
   }
 
