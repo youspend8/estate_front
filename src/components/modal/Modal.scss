@@ -22,10 +22,9 @@
     position: relative;
     margin: 0 auto;
     top: 100vh;
-    max-height: 80vh;
+    padding: 10px;
     box-shadow: 0px 0px 10px 1px rgb(192, 192, 192);
     transition: top .75s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    overflow-y: auto;
 
     &.open {
       top: 10vh;
@@ -33,6 +32,12 @@
 
     &.close {
       top: 100vh;
+    }
+
+    .modal_inner_wrapper {
+      overflow-y: auto;
+      top: 100vh;
+      max-height: 80vh;
     }
   }
   
