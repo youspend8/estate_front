@@ -204,7 +204,7 @@ const TradeInfoModal = ({ title, isOpen, onClose, tradeSearchResult, tradeStatsR
             }
           </Table>
         </Section>
-        <div style={{display: 'flex', justifyContent: 'center'}}>
+        <div style={{display: 'flex', justifyContent: 'center', margin: '5px 0'}}>
           <Button onClick={() => {}}>+ 더보기</Button>
         </div>  
       
