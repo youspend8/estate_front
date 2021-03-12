@@ -5,6 +5,7 @@ import { tradeAggregate } from '../../store/actions';
 import InfoOverlay from '../../components/common/NaverMap/InfoOverlay';
 import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
+import SearchInput from '../../components/common/SearchInput';
 
 const TradeAggregateContainer = ({ state, tradeAggs, tradeAggregate, onOpenInfo }) => {
   const [ map, setMap ] = useState({});
@@ -68,6 +69,7 @@ const TradeAggregateContainer = ({ state, tradeAggs, tradeAggregate, onOpenInfo 
 
   return (
     <>
+      <SearchInput />
       <NaverMap onCreate={onCreateMap} onIdle={onMapChange} />
     </>
   )
