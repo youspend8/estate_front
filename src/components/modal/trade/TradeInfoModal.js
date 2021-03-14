@@ -20,7 +20,7 @@ const TradeInfoModal = ({ title, isOpen, onClose, tradeSearchResult, tradeStatsR
     if (tradeStatsPeriodResult.data) {
       const periodList = tradeStatsPeriodResult.data.periodList;
       setChartLabel(periodList.map(item => item.date));
-      setChartPriceData(periodList.map(item => item.price));
+      setChartPriceData(periodList.map(item => Number.parseInt(item.price)));
       setChartCountData(periodList.map(item => item.count));
     }
   }, [ tradeStatsPeriodResult ]);
@@ -34,7 +34,7 @@ const TradeInfoModal = ({ title, isOpen, onClose, tradeSearchResult, tradeStatsR
             datasets: [
               {
                 type: 'line',
-                label: '거래건수',
+                label: '거래건수 총합',
                 borderColor: '#00bcd4',
                 borderWidth: 2,
                 pointBackgroundColor: '#00bcd4',
@@ -45,7 +45,7 @@ const TradeInfoModal = ({ title, isOpen, onClose, tradeSearchResult, tradeStatsR
               },
               {
                 type: 'bar',
-                label: '평균가격',
+                label: '평당가격 평균',
                 backgroundColor: '#ff9c44',
                 data: chartPriceLabel,
                 borderWidth: 0,
@@ -182,17 +182,17 @@ const TradeInfoModal = ({ title, isOpen, onClose, tradeSearchResult, tradeStatsR
               },
               {
                 title: '동',
-                style: { minWidth: '80px' }
+                style: { minWidth: '100px' }
               }
             ]}
           >
             {
               tradeSearchResult.data ? tradeSearchResult.data.map((item, index) => {
                 return (
-                  <TableRow>
+                  <TableRow key={index}>
                     <TableColumn>{ item.name }</TableColumn>
                     <TableColumn>{ item.deal.dealDate }</TableColumn>
-                    <TableColumn>{ item.amount }</TableColumn>
+                    <TableColumn>{ item.amount.toLocaleString() }</TableColumn>
                     <TableColumn>{ item.buildYear }</TableColumn>
                     <TableColumn>{ item.area }</TableColumn>
                     <TableColumn>{ item.floor }</TableColumn>
@@ -229,10 +229,10 @@ const TradeInfoModal = ({ title, isOpen, onClose, tradeSearchResult, tradeStatsR
             {
               tradeStatsResult.data ? tradeStatsResult.data.cityList.map((item, index) => {
                 return (
-                  <TableRow>
+                  <TableRow key={index}>
                     <TableColumn>{ item.dong }</TableColumn>
-                    <TableColumn>{ item.price }</TableColumn>
-                    <TableColumn>{ item.count }</TableColumn>
+                    <TableColumn>{ `${Number.parseInt(item.price).toLocaleString()}만` }</TableColumn>
+                    <TableColumn>{ `${item.count}건` }</TableColumn>
                   </TableRow>
                 )
               }) : ''

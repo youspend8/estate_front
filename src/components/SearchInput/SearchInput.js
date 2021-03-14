@@ -71,6 +71,7 @@ export default connect(
             addressList ? addressList.map((item, index) => {
               return (
                 <li className={`search-assistent-item ${selectedAssistIndex == index ? "active" : ""}`}
+                  key={index}
                   dangerouslySetInnerHTML={{
                     __html: item.keyword.replace(keyword, `<strong>${keyword}</strong>`)
                   }}
@@ -86,6 +87,7 @@ export default connect(
             nameList ? nameList.map((item, index) => {
               return (
                 <li className={`search-assistent-item ${selectedAssistIndex == (index + addressList.length) ? "active" : ""}`}
+                  key={index}
                   dangerouslySetInnerHTML={{
                     __html: `
                       ${item.keyword.replace(keyword, `<strong>${keyword}</strong>`)}
