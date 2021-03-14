@@ -1,40 +1,24 @@
 import { handleActions } from "redux-actions";
-import { ON_FAIL_SEARCH_ADDRESS_JSON, ON_FAIL_SEARCH_NAME_JSON, ON_SUCCESS_SEARCH_ADDRESS_JSON, ON_SUCCESS_SEARCH_NAME_JSON, SEARCH_ADDRESS_JSON, SEARCH_NAME_JSON } from "../actions/search";
+import { SEARCH_INDICES_JSON, ON_SUCCESS_SEARCH_INDICES_JSON, ON_FAIL_SEARCH_INDICES_JSON } from "../actions/search";
 
 const initialState = {
-  searchAddress: {},
-  searchName: {},
+  indices: {}
 };
 
 export default handleActions({
-  [SEARCH_ADDRESS_JSON]: (state, action) => {
+  [SEARCH_INDICES_JSON]: (state, { payload }) => {
     return {
       ...state,
+      payload
     }
   },
-  [ON_SUCCESS_SEARCH_ADDRESS_JSON]: (state, { data }) => {
+  [ON_SUCCESS_SEARCH_INDICES_JSON]: (state, { payload }) => {
     return {
       ...state,
-      searchAddress: data
+      indices: payload.data
     }
   },
-  [ON_FAIL_SEARCH_ADDRESS_JSON]: (state, action) => {
-    return {
-      ...state,
-    }
-  },
-  [SEARCH_NAME_JSON]: (state, action) => {
-    return {
-      ...state,
-    }
-  },
-  [ON_SUCCESS_SEARCH_NAME_JSON]: (state, { data }) => {
-    return {
-      ...state,
-      searchName: data
-    }
-  },
-  [ON_FAIL_SEARCH_NAME_JSON]: (state, action) => {
+  [ON_FAIL_SEARCH_INDICES_JSON]: (state, { payload }) => {
     return {
       ...state,
     }

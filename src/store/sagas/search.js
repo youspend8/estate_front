@@ -1,29 +1,20 @@
+import { put, spawn, takeEvery } from "@redux-saga/core/effects";
 import * as SearchAPI from "../../lib/api/search";
-import { onFailAddressJson, onFailNameJson, onSuccessAddressJson, onSuccessNameJson, SEARCH_ADDRESS_JSON, SEARCH_NAME_JSON } from "../actions/search";
+import { onFailIndicesJson, onSuccessIndicesJson, SEARCH_INDICES_JSON } from "../actions/search";
 
-function* searchAddressJson(payload) {
-  const { data } = yield SearchAPI.fetchSearchAddress(payload);
+function* searchIndices(payload) {
+  const { data } = yield SearchAPI.fetchSearchIndices(payload);
   try {
-      yield put(onSuccessAddressJson({ result: data }));
+      yield put(onSuccessIndicesJson({ ...data }));
   } catch (error) {
-      yield put(onFailAddressJson(data))
-  }
-}
-
-function* searchNameJson(payload) {
-  const { data } = yield SearchAPI.fetchSearchName(payload);
-  try {
-      yield put(onSuccessNameJson({ result: data }));
-  } catch (error) {
-      yield put(onFailNameJson(data))
+      yield put(onFailIndicesJson(data))
   }
 }
 
 function* watch() {
-  yield takeEvery(SEARCH_ADDRESS_JSON, searchAddressJson);
-  yield takeEvery(SEARCH_NAME_JSON, searchNameJson);
+  yield takeEvery(SEARCH_INDICES_JSON, searchIndices);
 }
 
-export default function* trade() {
+export default function* search() {
   yield spawn(watch);
 }

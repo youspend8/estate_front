@@ -1,9 +1,5 @@
-import axios from '../staticDefaultClient';
+import axios from '../defaultClient';
 
-export const fetchSearchName = () => (
-  axios.get('/json/search_name.json')
-);
-
-export const fetchSearchAddress = () => (
-  axios.get('/json/search_address.json')
+export const fetchSearchIndices = ({ payload }) => (
+  axios.get(`/search/assist/${payload}`)
 );
